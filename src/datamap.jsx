@@ -45,16 +45,12 @@ export default class Datamap extends React.Component {
 			that = this;
 		
 		this.map.svg.selectAll('.datamaps-subunit').on('click', function(geo) {
-			if(that.props.onClick){
-				that.props.onClick(m.options.data[geo.id])
-			} else {
-				that.onClick(m.options.data)	
-			}
-        	
+			var func = that.props.onClick || that.onClick;
+			func(m.options.data[geo.id], geo.id)
       })
 	}
-	onClick(e){
-		console.log(e)
+	onClick(e,f){
+		console.log(e,f)
 	}
 
 	componentWillReceiveProps(newProps) {
