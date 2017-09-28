@@ -26,11 +26,13 @@ export default class Datamap extends React.Component {
 		responsive: PropTypes.bool,
 		style: PropTypes.object,
 		updateChoroplethOptions: PropTypes.object,
-		width: PropTypes.any
+		width: PropTypes.any,
+		onClick: PropTypes.func
 	};
 
 	constructor(props) {
 		super(props);
+		this.onClick = this.onClick.bind(this);
 		this.resizeMap = this.resizeMap.bind(this);
 	}
 
@@ -39,6 +41,16 @@ export default class Datamap extends React.Component {
 			window.addEventListener('resize', this.resizeMap);
 		}
 		this.drawMap();
+		var m = this.map,
+			that = this;
+		
+		this.map.svg.selectAll('.datamaps-subunit').on('click', function(geo) {
+			console.log(m.options.data)
+        	that.onClick(m.options.data)
+      })
+	}
+	onClick(e){
+		console.log(e)
 	}
 
 	componentWillReceiveProps(newProps) {
