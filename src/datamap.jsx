@@ -120,6 +120,7 @@ export default class Datamap extends React.Component {
 		if (labels) {
 			map.labels();
 		}
+		map.legend();
 	}
 
 	resizeMap() {
