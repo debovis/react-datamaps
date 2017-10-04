@@ -47,7 +47,7 @@ export default class Datamap extends React.Component {
 		this.map.svg.selectAll('.datamaps-subunit').on('click', function(geo) {
 			var func = that.props.onClick || that.onClick;
 			func(m.options.data[geo.id], geo.id)
-      })
+	  })
 	}
 	onClick(e,f){
 		console.log(e,f)
@@ -120,7 +120,16 @@ export default class Datamap extends React.Component {
 		if (labels) {
 			map.labels();
 		}
-		map.legend();
+		map.legend({
+		  legendTitle: "Where Have We Been",
+		  defaultFillName: "Whats left",
+		  labels: {
+			 Visited: "Fred",
+			 spouse: "Wilma",
+			 together: "Together",
+			 separately: "Separately",
+		  },
+		});
 	}
 
 	resizeMap() {
