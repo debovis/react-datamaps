@@ -27,6 +27,7 @@ export default class Datamap extends React.Component {
 		style: PropTypes.object,
 		updateChoroplethOptions: PropTypes.object,
 		width: PropTypes.any,
+		legend: PropTypes.object,
 		onClick: PropTypes.func
 	};
 
@@ -90,6 +91,7 @@ export default class Datamap extends React.Component {
 			graticule,
 			labels,
 			updateChoroplethOptions,
+			legend,
 			...props
 		} = this.props;
 
@@ -120,16 +122,10 @@ export default class Datamap extends React.Component {
 		if (labels) {
 			map.labels();
 		}
-		map.legend({
-		  legendTitle: "Where Have We Been",
-		  defaultFillName: "Whats left",
-		  labels: {
-			 Visited: "Fred",
-			 spouse: "Wilma",
-			 together: "Together",
-			 separately: "Separately",
-		  },
-		});
+
+		if (legend){
+			map.legend(legend);
+		}
 	}
 
 	resizeMap() {
