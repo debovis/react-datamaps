@@ -104,6 +104,7 @@ export default class Datamap extends React.Component {
 				element: this.refs.container
 			});
 		} else {
+			map.svg.select('.bubbles').selectAll('*').remove()
 			map.updateChoropleth(data, updateChoroplethOptions);
 		}
 
